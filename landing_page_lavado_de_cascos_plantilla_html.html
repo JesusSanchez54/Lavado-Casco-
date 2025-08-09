@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lavado profesional de cascos — Reserva</title>
+  <style>
+    /* Minimal, responsive, clean styling */
+    :root{--accent:#0f766e;--muted:#6b7280}
+    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0;color:#111}
+    .container{max-width:920px;margin:32px auto;padding:20px}
+    header{display:flex;align-items:center;gap:16px}
+    .logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+    h1{margin:0;font-size:1.6rem}
+    p.lead{color:var(--muted);margin-top:6px}
+    .grid{display:grid;grid-template-columns:1fr 380px;gap:24px;margin-top:20px}
+    .card{background:#fff;border:1px solid #e6e6e9;padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(16,24,40,0.03)}
+    ul.benefits{padding-left:18px;color:var(--muted);margin:10px 0}
+    .price{font-size:1.4rem;font-weight:700;color:var(--accent);margin-top:6px}
+    .cta{display:inline-block;padding:12px 18px;border-radius:10px;background:var(--accent);color:#fff;text-decoration:none;margin-top:12px}
+    form{display:flex;flex-direction:column;gap:10px}
+    input,select,textarea{padding:10px;border-radius:8px;border:1px solid #ddd;font-size:0.95rem}
+    button{background:var(--accent);color:white;padding:12px;border-radius:10px;border:0;font-weight:700}
+    .muted{font-size:0.9rem;color:var(--muted)}
+    footer{margin-top:18px;font-size:0.85rem;color:var(--muted)}
+    @media(max-width:880px){.grid{grid-template-columns:1fr}.container{padding:14px}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">LC</div>
+      <div>
+        <h1>Lavado profesional de cascos — prueba piloto</h1>
+        <p class="lead">Rápido, higiénico y con opción a recolección en Zipaquirá. Reserva tu lavado en 30 segundos.</p>
+      </div>
+    </header>
+
+    <div class="grid">
+      <div>
+        <div class="card">
+          <h2>¿Por qué lavar tu casco?</h2>
+          <ul class="benefits">
+            <li>Elimina malos olores y bacterias</li>
+            <li>Preserva el interior del casco y sus protectores</li>
+            <li>Servicio rápido: 24–48 horas / opción express</li>
+          </ul>
+
+          <div class="price">Precio promocional lanzamiento: <strong>8.000 COP</strong></div>
+          <a class="cta" href="#form">Reservar ahora</a>
+
+          <hr style="margin:14px 0" />
+          <h3>Cómo funciona</h3>
+          <ol class="muted">
+            <li>Reservas online o por WhatsApp</li>
+            <li>Traes o recogemos el casco</li>
+            <li>Lavado, desinfección y secado</li>
+            <li>Entrega en el mismo día (según zona)</li>
+          </ol>
+
+          <p class="muted" style="margin-top:12px">Promoción válida para los primeros 100 cascos. Fotos antes/después disponibles.</p>
+        </div>
+
+        <div style="margin-top:12px" class="card">
+          <h3>Test rápido — ¿Te interesa?</h3>
+          <p class="muted">Ayúdanos a validar. Si reservas hoy recibirás un descuento extra.</p>
+          <ul class="muted">
+            <li>Tiempo estimado por servicio: 20–40 min</li>
+            <li>Pago: efectivo, Nequi o Daviplata</li>
+          </ul>
+        </div>
+      </div>
+
+      <aside>
+        <div class="card">
+          <h3 id="form">Reserva / Registro</h3>
+
+          <!--
+            OPCIÓN A: Formspree (recomendado para envío sencillo desde HTML estático)
+            1) Regístrate en Formspree (https://formspree.io) y crea un form. Reemplaza {form_id} abajo.
+            2) Guarda notificaciones en Formspree o conecta con tu correo/Sheets.
+            Ejemplo action: https://formspree.io/f/{form_id}
+            (Ver instrucciones en la documentación de Formspree)
+          -->
+
+          <!--
+            OPCIÓN B (si publicas en Netlify): usa data-netlify="true" y un input oculto name="form-name" con el mismo nombre.
+            Netlify detecta el formulario y guarda envíos. (Ver Netlify Forms docs)
+          -->
+
+          <form id="leadForm" action="https://formspree.io/f/{YOUR_FORM_ID}" method="POST">
+            <input type="text" name="Nombre" placeholder="Nombre completo" required />
+            <input type="tel" name="Telefono" placeholder="Teléfono / WhatsApp" required />
+            <input type="text" name="Barrio" placeholder="Barrio (Zipaquirá)" />
+            <select name="Frecuencia">
+              <option value="mensual">Lavo casco cada mes</option>
+              <option value="trimestral">Cada 3 meses</option>
+              <option value="ocasional">Sólo cuando está sucio</option>
+            </select>
+            <label class="muted">¿Recolección?</label>
+            <select name="Recoleccion">
+              <option value="no">Traigo el casco</option>
+              <option value="si">Quiero recolección (cargo extra)</option>
+            </select>
+            <label class="muted">¿Cuánto pagarías por lavado?</label>
+            <select name="PrecioAceptable">
+              <option value="5000">5.000 COP</option>
+              <option value="8000">8.000 COP</option>
+              <option value="12000">12.000 COP</option>
+            </select>
+            <input type="hidden" name="_subject" value="Nueva reserva - Lavado cascos" />
+            <button type="submit">Enviar reserva / recibir descuento</button>
+          </form>
+
+          <p class="muted" style="margin-top:10px">Al enviar aceptas que te contactemos por WhatsApp para coordinar.</p>
+        </div>
+
+        <div style="margin-top:12px" class="card muted">
+          <strong>Opciones rápidas (sin código)</strong>
+          <p style="margin:6px 0">Si no quieres crear formulario ahora, crea un <strong>Google Form</strong> y pega su link aquí; o comparte un post con el link del form en Facebook/WhatsApp.</p>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="muted">¿Listo para probar? Sigue los pasos que te doy en la guía y publica en 30–60 minutos.</footer>
+  </div>
+
+  <script>
+    // Mejora UX: intercepta el submit para mostrar agradecimiento si se usa AJAX;
+    // si usas Formspree con action directo, el navegador hará POST y la página se recargará.
+    document.getElementById('leadForm').addEventListener('submit', function(e){
+      // If still using the placeholder URL, prevent actual submit and show a tip.
+      if(this.action.includes('{YOUR_FORM_ID}')){
+        e.preventDefault();
+        alert('Sustituye {YOUR_FORM_ID} en el atributo action por tu ID de Formspree o configura Netlify/Formback. Mira la guía.');
+      }
+    });
+  </script>
+</body>
+</html>
